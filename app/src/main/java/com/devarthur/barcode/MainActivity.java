@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
 
-
+                //Todo we should ask for permission with a pop up.
                 if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
                     return;
