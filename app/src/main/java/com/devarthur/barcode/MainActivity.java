@@ -1,7 +1,9 @@
 package com.devarthur.barcode;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -93,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
 
-
+                            Vibrator vibrator = (Vibrator)getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+                            vibrator.vibrate(1000);
                             textview.setText(qrcodes.valueAt(0).displayValue);
                         }
                     });
