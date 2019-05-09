@@ -3,6 +3,7 @@ package com.devarthur.barcode;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -25,11 +26,16 @@ public class MainActivity extends AppCompatActivity {
     CameraSource cameraSource;
     TextView textview;
     BarcodeDetector barcodeDetector;
-
+    private static final int RQ_PERMISSIONS_MEDIA = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA
+                    }, RQ_PERMISSIONS_MEDIA);
+        }
 
         initVars();
     }
@@ -49,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
 
-                //Todo we should ask for permission with a pop up.
+
                 if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
                     return;
