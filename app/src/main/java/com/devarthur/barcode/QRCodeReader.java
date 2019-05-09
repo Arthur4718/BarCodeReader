@@ -20,7 +20,7 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+public class QRCodeReader extends AppCompatActivity {
 
     SurfaceView surfaceView;
     CameraSource cameraSource;
@@ -30,12 +30,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CAMERA
-                    }, RQ_PERMISSIONS_MEDIA);
-        }
+
 
         initVars();
     }
